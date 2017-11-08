@@ -1,7 +1,7 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -33,6 +33,7 @@ int main(int argc, char *argv[]) {
 	
 	result = fputs(geracao, arq);
 	//result = fputs('\n', arq);
+	
 	result = fputs(matriz, arq);
 	
 	
@@ -40,6 +41,41 @@ int main(int argc, char *argv[]) {
 	if (result == EOF)
 	    printf("Erro na Gravacao\n");
 	fclose(arq);
+	
+	
+	// ************************************************************
+	//   Exemplo de uso de arquivo texto
+	//   Este programa lê um arquivo texto e imprime o seu
+	//   conteudo na tela.
+	// ************************************************************
+	
+	int i;
+	char Linha[100];
+	char matriz2[2][3];
+	
+	//clrscr();
+	
+	// Abre um arquivo TEXTO para LEITURA
+	arq = fopen("Arquivos/ArqGrav.txt", "rt");
+	if (arq == NULL)  // Se houve erro na abertura
+	  {
+	    printf("Problemas na abertura do arquivo\n");
+	    return;
+	  }
+	i = 0;
+	while (!feof(arq))
+	  {
+		// Lê uma linha (inclusive com o '\n')
+	      result = fgets(Linha, 100, arq);  // o 'fgets' lê até 99 caracteres ou até o '\n'
+	      if (result)  // Se foi possível ler
+	      	//matriz2 = Linha;
+		  	printf("Linha %d : %s",i,Linha);
+	      i++;
+	  }
+	  
+	  fclose(arq);
+	
+	
 	
 	return 0;
 }
