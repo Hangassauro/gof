@@ -1,1 +1,45 @@
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char *argv[]) {
+	
+	char matriz[2][3] = {
+						{'1','0', '\n'},
+						{'1','0', '\n'}
+						};
+	char geracao[100] = "Geracao 1\n";	
+	
+	
+	/*
+	"wt": abertura para gravação, arquivo texto
+	"rt": abertura para leitura, arquivo texto
+	*/
+	
+	char Str[100];
+	FILE *arq;
+	int result;
+	
+	arq = fopen("Arquivos/ArqGrav.txt", "wt");  // Cria um arquivo texto para gravação
+	if (arq == NULL) // Se não conseguiu criar
+	{
+	   printf("Problemas na CRIACAO do arquivo\n");
+	   return;
+	}
+	strcpy(Str,"Hangai e feio");
+	
+	result = fputs(geracao, arq);
+	//result = fputs('\n', arq);
+	result = fputs(matriz, arq);
+	
+	
+	
+	if (result == EOF)
+	    printf("Erro na Gravacao\n");
+	fclose(arq);
+	
+	return 0;
+}
