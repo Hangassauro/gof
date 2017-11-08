@@ -6,6 +6,8 @@
 
 #define GERACOES 4
 
+//Hangai feio
+
 #define TRUE 1
 #define FALSE 0
 
