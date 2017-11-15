@@ -1,0 +1,18 @@
+ /* Série de testes sobre os 6 vizinhos possivéis*/
+ 
+                if (m1[(i-1+tamanho)%tamanho][(j-1+tamanho)%tamanho]==1)
+                    t++;
+                if (m1[(i-1+tamanho)%tamanho][j]==1)
+                    t++;
+                if (m1[(i-1+tamanho)%tamanho][(j+1)%tamanho]==1)
+                    t++;
+                if (m1[i][(j-1+tamanho)%tamanho]==1)
+                    t++;
+                if (m1[i][(j+1)%tamanho]==1)
+                    t++;
+                if (m1[(i+1)%tamanho][(j-1+tamanho)%tamanho]==1)
+                    t++;
+                if (m1[(i+1)%tamanho][j]==1)
+                    t++;
+                if (m1[(i+1)%tamanho][(j+1)%tamanho]==1)
+                    t++;
