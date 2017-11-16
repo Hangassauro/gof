@@ -10,19 +10,19 @@
 #define FALSE 0
 
 // Funções
-void GerarAleatorio(int matriz1[][], int matriz2[][], int tam);
-void ExibirMatriz (int matriz[][], int tam);
-void RodarGeracoes(int matriz1[][], int matriz2[][], int nvezes, int tam);
-void SalvarArquivo(int matriz1[][], int matriz2[][], int tam);
-void LimparCampos(int matriz1[][], int matriz2[][], int tam);
-void LimparCampos(int matriz1[][], int matriz2[][], int matriz3[][], int matriz4[][], int tam);
+void GerarAleatorio(int matriz1[TAMANHO_MAX][TAMANHO_MAX], int matriz2[TAMANHO_MAX][TAMANHO_MAX], int tam);
+void ExibirMatriz (int matriz[TAMANHO_MAX][TAMANHO_MAX], int tam);
+void RodarGeracoes(int matriz1[TAMANHO_MAX][TAMANHO_MAX], int matriz2[TAMANHO_MAX][TAMANHO_MAX], int nvezes, int tam);
+void RodarGeracoesImprimir(int matriz1[TAMANHO_MAX][TAMANHO_MAX], int matriz2[TAMANHO_MAX][TAMANHO_MAX], int nvezes, int tam);
+void SalvarArquivo(int matriz1[TAMANHO_MAX][TAMANHO_MAX], int matriz2[TAMANHO_MAX][TAMANHO_MAX], int tam);
+void LimparCampos(int matriz1[TAMANHO_MAX][TAMANHO_MAX], int matriz2[TAMANHO_MAX][TAMANHO_MAX], int matriz3[TAMANHO_MAX][TAMANHO_MAX], int matriz4[TAMANHO_MAX][TAMANHO_MAX], int tam);
 
 int main()
 {
     char opcaomenu, opcao, opcaorec;
     int i, j, t = 0, x=0, k, fim = FALSE;
     int tamanho = TAMANHO_MAX, validar = 0;
-    int m1[tamanho][tamanho], m2[tamanho][tamanho], m3[tamanho][tamanho], m4[tamanho][tamanho];
+    int m1[TAMANHO_MAX][TAMANHO_MAX], m2[TAMANHO_MAX][TAMANHO_MAX], m3[TAMANHO_MAX][TAMANHO_MAX], m4[TAMANHO_MAX][TAMANHO_MAX];
     int n_geracoes=GERACOES;
     int nsalvar, auxsalvar = 0;
     
@@ -129,10 +129,10 @@ int main()
                         auxsalvar++;
                     }while (nsalvar > n_geracoes);
 
-                    RodarGeracoes(m3, m4, nsalvar, tamanho);
+                    RodarGeracoesImprimir(m3, m4, nsalvar, tamanho);
                     SalvarArquivo(m3, m4, tamanho);
                     printf("A geracao salva foi:");
-                    ExibirMatriz (m4, tamanho)
+                    ExibirMatriz (m4, tamanho);
 
                 }
     
@@ -149,14 +149,14 @@ int main()
     } while (opcaomenu != 'S' && opcaomenu != 's');
 }
 
-void GerarAleatorio(int matriz1[][], int matriz2[][], int tam){
+void GerarAleatorio(int matriz1[TAMANHO_MAX][TAMANHO_MAX], int matriz2[TAMANHO_MAX][TAMANHO_MAX], int tam){
 
     matriz1[0][0] = matriz2[0][0] = 1;
     matriz1[0][1] = matriz2[0][0] = 1;
     matriz1[0][2] = matriz2[0][0] = 1;
 }
 
-void ExibirMatriz (int matriz[][], int tam){
+void ExibirMatriz (int matriz[TAMANHO_MAX][TAMANHO_MAX], int tam){
 
     int i, j;
 
@@ -172,7 +172,7 @@ void ExibirMatriz (int matriz[][], int tam){
     printf("\n\n");
 }
 
-void RodarGeracoes(int matriz1[][], int matriz2[][], int nvezes, int tam){
+void RodarGeracoes(int matriz1[TAMANHO_MAX][TAMANHO_MAX], int matriz2[TAMANHO_MAX][TAMANHO_MAX], int nvezes, int tam){
 
     int i, k, j;
     int t;
@@ -231,7 +231,67 @@ void RodarGeracoes(int matriz1[][], int matriz2[][], int nvezes, int tam){
     }    
 }
 
-void SalvarArquivo(int matriz1[][], int matriz2[][], int tam){
+void RodarGeracoesImprimir(int matriz1[TAMANHO_MAX][TAMANHO_MAX], int matriz2[TAMANHO_MAX][TAMANHO_MAX], int nvezes, int tam){
+
+    int i, k, j;
+    int t;
+
+    for(k = 1; k <= nvezes; k++){ /* Numero de gerações a serem exibidas*/
+        for(i=0;i<tam;i++){
+            for (j=0;j<tam;j++){
+
+                t=0;
+
+                /* Série de testes sobre os 6 vizinhos possivéis*/
+                if (matriz1[(i-1+tam)%tam][(j-1+tam)%tam]==1)
+                    t++;
+                if (matriz1[(i-1+tam)%tam][j]==1)
+                    t++;
+                if (matriz1[(i-1+tam)%tam][(j+1)%tam]==1)
+                    t++;
+                if (matriz1[i][(j-1+tam)%tam]==1)
+                    t++;
+                if (matriz1[i][(j+1)%tam]==1)
+                    t++;
+                if (matriz1[(i+1)%tam][(j-1+tam)%tam]==1)
+                    t++;
+                if (matriz1[(i+1)%tam][j]==1)
+                    t++;
+                if (matriz1[(i+1)%tam][(j+1)%tam]==1)
+                    t++;
+
+                /* Atribuir o valores atualizadoos*/
+                    if ((t==0)||(t==1)||(t>=4)){
+                        matriz2[i][j]=0;
+                    }
+                    else {
+                        if (t==3){
+                            matriz2[i][j]=1;
+                        }
+                        else {
+                            matriz2[i][j]=matriz1[i][j];
+                        }
+                    }
+            }
+        }
+        /* Atribuindo a matriz real(matriz2) na matriz de teste(matriz1)*/
+        for(i=0;i<tam;i++){
+            for(j=0;j<tam;j++){
+                matriz1[i][j] = matriz2[i][j];
+            }
+        }
+        /* Exibindo a matriz*/
+        //printf("\n\n");                   
+        //ExibirMatriz(matriz2, tam);
+
+        printf("\n\n");
+    }    
+}
+
+
+
+
+void SalvarArquivo(int matriz1[TAMANHO_MAX][TAMANHO_MAX], int matriz2[TAMANHO_MAX][TAMANHO_MAX], int tam){
 
     int i, j;
 
@@ -261,7 +321,7 @@ void SalvarArquivo(int matriz1[][], int matriz2[][], int tam){
     printf("Gravacao concluida com sucesso\nSeres Vivos gravados:\n"); 
 }
 
-void LimparCampos(int matriz1[][], int matriz2[][], int matriz3[][], int matriz4[][], int tam){
+void LimparCampos(int matriz1[TAMANHO_MAX][TAMANHO_MAX], int matriz2[TAMANHO_MAX][TAMANHO_MAX], int matriz3[TAMANHO_MAX][TAMANHO_MAX], int matriz4[TAMANHO_MAX][TAMANHO_MAX], int tam){
     int i, j;
     for (i=0;i<tam;i++){
         for (j=0;j<tam;j++){
