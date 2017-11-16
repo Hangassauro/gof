@@ -25,7 +25,7 @@ int main()
 	int result;
 	int m3[tamanho][tamanho], m4[tamanho][tamanho];
 	
-	arq = fopen("Arquivos/recSuperElisa.txt", "wt");
+	arq = fopen("recSuperElisa.txt", "wt");
 	
 	if(arq == NULL){
 		printf("Problemas na criacao do arquivo\n");
@@ -177,15 +177,17 @@ int main()
 
                     printf("\n\n");
                 }
-                printf("Deseja salvar antes de limpar?");
+                
+                printf("Deseja salvar antes de limpar? (S/N)");
                 opcaorec = getch();
                 printf("\n");
-                if(opcao == 'S'  || opcao == 's'){
+                if(opcaorec == 'S'  || opcaorec == 's'){    // QUE ERRO JUVENIL HEIN DANIBOY!!!!!
+                	printf("Gravacao concluida com sucesso\nSeres Vivos gravados:\n");
             		for(i=0; i < tamanho;i++){
             			for(j=0; j< tamanho; j++){
             				if(m2[i][j]==1){				
-            					sprintf(rec, "Linha %d -  Coluna %d\n", i,j);
-            					printf("%d-%d \n", i,j );
+            					sprintf(rec, "Linha %d -  Coluna %d \n", i,j);
+            					printf("[%d][%d]\n", i,j );
             					result = fputs(rec,arq); 
             				}
             			}		
@@ -207,5 +209,5 @@ int main()
 		
             break;
         }
-	} while (opcao != 'S' && opcao != 's');
+	} while (opcaomenu != 'S' && opcao != 's');
 }
