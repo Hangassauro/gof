@@ -150,6 +150,8 @@ int main()
 
 void ExibirMatriz (int matriz[][], int tam){
 
+    int i, j;
+
     /* Exibindo a matriz*/
     printf("\n\n");
 
@@ -164,6 +166,7 @@ void ExibirMatriz (int matriz[][], int tam){
 
 void RodarGeracoes(int matriz1[][], int matriz2[][], int nvezes, int tam){
 
+    int i, k, j;
     int t;
 
     for(k = 1; k <= nvezes; k++){ /* Numero de gerações a serem exibidas*/
