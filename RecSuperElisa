@@ -26,13 +26,13 @@ int main(){
 	for(i=0; i<2;i++){
 		for(c=0; c<2; c++){
 			if(matriz[i][c]==1){
-				printf("%d - %d", i,c);
-				printf("\n");
+				//printf("%d - %d", i,c);
+				//printf("\n");
 
 				
-				sprintf(elisa, "%d - %d", i,c );
+				sprintf(elisa, "%d - %d \n", i,c );
 				printf("%d-%d \n", i,c );
-				result = fputs(elisa,arq); 
+				result = fputs(elisa,arq);
 
 								
 
@@ -40,9 +40,9 @@ int main(){
 
 
 			}
+		}
 	}
 
-	fclose(arq);
-	//printf("%c \n",elisa);
-}
+fclose(arq);
+
 }
