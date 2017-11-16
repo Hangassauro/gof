@@ -10,6 +10,7 @@
 #define FALSE 0
 
 // Funções
+void GerarAleatorio(int matriz1[][], int matriz2[][], int tam);
 void ExibirMatriz (int matriz[][], int tam);
 void RodarGeracoes(int matriz1[][], int matriz2[][], int nvezes, int tam);
 void SalvarArquivo(int matriz1[][], int matriz2[][], int tam);
@@ -26,12 +27,10 @@ int main()
     int nsalvar, auxsalvar = 0;
     
     LimparCampos(m1, m2, m3, m4, tamanho);
+
+    GerarAleatorio(m1, m3, tamanho);
     
-    m1[0][0] = m3[0][0] = 1;
-    m1[0][1] = m3[0][0] = 1;
-    m1[0][2] = m3[0][0] = 1;
-
-
+    
 
     do{
         fflush(stdin);
@@ -41,7 +40,9 @@ int main()
         switch(opcaomenu){
             case 'C':
             case 'c':
+                LimparCampos(m1, m2, m3, m4, tamanho);
                 do{
+
                     if(validar  == TRUE){
                         printf("Digite um tamanho valido... Min: 50 - Max: 100");
                         printf("\n");
@@ -146,6 +147,13 @@ int main()
             break;
         }
     } while (opcaomenu != 'S' && opcaomenu != 's');
+}
+
+void GerarAleatorio(int matriz1[][], int matriz2[][], int tam){
+
+    matriz1[0][0] = matriz2[0][0] = 1;
+    matriz1[0][1] = matriz2[0][0] = 1;
+    matriz1[0][2] = matriz2[0][0] = 1;
 }
 
 void ExibirMatriz (int matriz[][], int tam){
