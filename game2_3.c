@@ -146,7 +146,8 @@ int main()
             case 'L':
             case 'l':
                 LimparCampos(m1, m2, m3, m4, tamanho);
-                AbrirArquivoGeracao(m1, m3);
+                AbrirArquivoGeracao(m1, m3, tamanho);
+
             break;
         }
     } while (opcaomenu != 'S' && opcaomenu != 's');
