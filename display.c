@@ -404,11 +404,11 @@ int main(){
                             r= (char) red;
                             g= (char) green;
                             b= (char) blue;
-                            al_draw_filled_rectangle(250-tamanho*2+4*i,250-tamanho*2+4*j,250-tamanho*2+4*i+4,250-tamanho*2+4*j+4,al_map_rgb(r,g,b));
+                            al_draw_filled_rectangle(250-tamanho*2+4*i,250-tamanho*2+4*j,250-tamanho*2+4*i+3,250-tamanho*2+4*j+3,al_map_rgb(r,g,b));
                             }
                         else {
                             m1[i][j]=m2[i][j]=0;
-                            al_draw_filled_rectangle(250-tamanho*2+4*i,250-tamanho*2+4*j,250-tamanho*2+4*i+4,250-tamanho*2+4*j+4,al_map_rgb(0,0,0));
+                            al_draw_filled_rectangle(250-tamanho*2+4*i,250-tamanho*2+4*j,250-tamanho*2+4*i+3,250-tamanho*2+4*j+3,al_map_rgb(0,0,0));
                         }
                     }
                     else if(x>335&&x<450&&y>475&&x<525){
@@ -728,10 +728,10 @@ void ExibirMatriz (int matriz[TAMANHO_MAX][TAMANHO_MAX], int tam, int color){
                 r= (char) red;
                 g= (char) green;
                 b= (char) blue;
-                al_draw_filled_rectangle(250-tam*2+4*i,250-tam*2+4*j,250-tam*2+4*i+4,250-tam*2+4*j+4,al_map_rgb(r,g,b));
+                al_draw_filled_rectangle(250-tam*2+4*i,250-tam*2+4*j,250-tam*2+4*i+3,250-tam*2+4*j+3,al_map_rgb(r,g,b));
             }
             else{
-                al_draw_filled_rectangle(250-tam*2+4*i,250-tam*2+4*j,250-tam*2+4*i+4,250-tam*2+4*j+4,al_map_rgb(0,0,0));
+                al_draw_filled_rectangle(250-tam*2+4*i,250-tam*2+4*j,250-tam*2+4*i+3,250-tam*2+4*j+3,al_map_rgb(0,0,0));
             }
         }
     }
