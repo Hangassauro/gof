@@ -458,7 +458,6 @@ int main(){
                         screen=3;
                         al_clear_to_color(al_map_rgb(0,0,0));
                         draw=1;
-                        k=0;
                     }
                 }
             }
