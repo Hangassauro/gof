@@ -1,3 +1,4 @@
+/*Daniel Henrique, Elisa Otto, Henrique Hangai*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -312,8 +313,8 @@ int main(){
                     }
                     else if (x>320&&x<340&&y>185&&y<205){
                         n_geracoes--;
-                        if (n_geracoes<0){
-                            n_geracoes=0;
+                        if (n_geracoes<1){
+                            n_geracoes=1;
                         }
                         else{
                             al_draw_filled_rectangle(350,175,400,215,al_map_rgb(0,0,0));
